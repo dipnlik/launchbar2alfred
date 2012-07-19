@@ -8,10 +8,10 @@ class String
   end
 end
 
-launchbar_plist_path = "#{Dir.home}/Library/Application Support/LaunchBar/Configuration.plist"
-alfred_plist_path = "#{Dir.home}/Library/Application Support/Alfred/customsites/customsites.plist"
+LAUNCHBAR_PLIST_PATH = "#{Dir.home}/Library/Application Support/LaunchBar/Configuration.plist"
+ALFRED_PLIST_PATH = "#{Dir.home}/Library/Application Support/Alfred/customsites/customsites.plist"
 
-launchbar_plist = Plist::parse_xml( launchbar_plist_path )
+launchbar_plist = Plist::parse_xml LAUNCHBAR_PLIST_PATH
 
 launchbar_searches = []
 launchbar_plist['rules'].each do |rule|
