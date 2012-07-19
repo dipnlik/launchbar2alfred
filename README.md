@@ -6,7 +6,7 @@ Requires the `plist` gem, so run `gem install plist` first.
 
 # Sample usage
 
-From Terminal:
+Quit Alfred.  Then, from Terminal:
 
     git clone https://github.com/dipnlik/launchbar2alfred.git
     cd launchbar2alfred
