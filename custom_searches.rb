@@ -18,6 +18,7 @@ launchbar_plist['rules'].each do |rule|
   launchbar_searches << rule if rule['className'] == "ODLBSearchTemplatesRule"
 end
 
+converted_searches = []
 launchbar_searches.each_with_index do |search, index|
   alias_matches = search['aliasName'].match(/(Custom )?Search Templates( \((.*)\))?/)
   prefix = alias_matches[1] ? alias_matches[1].to_prefix : alias_matches[3].to_prefix
@@ -26,14 +27,16 @@ launchbar_searches.each_with_index do |search, index|
     template_name = template['name'].to_prefix
     template_url = template['templateURL'].sub('*', '{query}')
     
-    STDOUT.puts <<-SEARCH
-lb-#{prefix}-#{template_name}
-#{template['name']} #{search['aliasName'].sub('Templates', 'Template')} 
-#{template_url}
-
-SEARCH
+    search = {
+      keyword: "lb-#{prefix}-#{template_name}",
+      spaces: false,
+      text: "#{template['name']} #{search['aliasName'].to_s.sub('Templates', 'Template')}".strip,
+      url: template_url,
+      utf8: alias_matches[3].to_s == 'UTF-8',
+    }
+    
+    converted_searches << search
   end
 end
 
-# @x = launchbar_searches
-# puts "@x ready."
+ap converted_searches
