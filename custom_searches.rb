@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'plist'
-require 'awesome_print'
 
 class String
   def to_prefix
@@ -39,4 +38,12 @@ launchbar_searches.each_with_index do |search, index|
   end
 end
 
-ap converted_searches
+alfred_plist = Plist::parse_xml ALFRED_PLIST_PATH
+alfred_plist += converted_searches
+
+STDOUT.puts alfred_plist.to_plist
+
+# Potentially dangerous!
+# File.open(ALFRED_PLIST_PATH, 'w+') do |file|
+#   file.puts alfred_plist.to_plist
+# end
