@@ -1,5 +1,10 @@
-require 'rubygems'
-require 'plist'
+#!/usr/bin/env ruby -rubygems
+
+begin
+  require 'plist'
+rescue LoadError
+  puts "plist gem not found.  Please run `gem install plist` and try again."
+end
 
 class String
   def to_prefix
@@ -45,7 +50,7 @@ converted_searches.sort!{|x, y| x["keyword"] <=> y["keyword"] }
 alfred_plist = Plist::parse_xml ALFRED_PLIST_PATH
 alfred_plist = converted_searches + alfred_plist
 
-STDOUT.puts alfred_plist.to_plist
+puts alfred_plist.to_plist
 
 # Potentially dangerous!
 # File.open(ALFRED_PLIST_PATH, 'w+') do |file|
