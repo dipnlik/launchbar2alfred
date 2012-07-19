@@ -4,7 +4,7 @@ Reads all search templates from [LaunchBar](http://obdev.at/launchbar/) and outp
 
 Requires the `plist` gem, so run `gem install plist` first.
 
-# Sample usage
+## Sample usage
 
 Quit Alfred.  Then, from Terminal:
 
