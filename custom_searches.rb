@@ -40,6 +40,8 @@ launchbar_searches.each_with_index do |search, index|
   end
 end
 
+converted_searches.sort!{|x, y| x["keyword"] <=> y["keyword"] }
+
 alfred_plist = Plist::parse_xml ALFRED_PLIST_PATH
 alfred_plist += converted_searches
 
