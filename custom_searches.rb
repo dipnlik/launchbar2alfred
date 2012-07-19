@@ -29,11 +29,11 @@ launchbar_searches.each_with_index do |search, index|
     template_url = template['templateURL'].sub('*', '{query}')
     
     search = {
-      :keyword => "lb-#{prefix}-#{template_name}",
-      :spaces => false,
-      :text => "#{template['name']} #{search['aliasName'].to_s.sub('Templates', 'Template')}".strip,
-      :url => template_url,
-      :utf8 => alias_matches[3].to_s == 'UTF-8',
+      "keyword" => "lb-#{prefix}-#{template_name}",
+      "spaces" => false,
+      "text" => "#{template['name']} #{search['aliasName'].to_s.sub('Templates', 'Template')}".strip,
+      "url" => template_url,
+      "utf8" => alias_matches[3].to_s == 'UTF-8',
     }
     
     converted_searches << search
