@@ -3,7 +3,7 @@ require 'plist'
 
 class String
   def to_prefix
-    self.strip.downcase.gsub(/\W+/, '-')
+    self.strip.downcase.gsub(/\W+/, '')
   end
 end
 
@@ -29,7 +29,7 @@ launchbar_searches.each_with_index do |search, index|
     template_url = template['templateURL'].sub('*', '{query}')
     
     search = {
-      "keyword" => "lb-#{prefix}-#{template_name}",
+      "keyword" => "#{template_name}",
       "spaces" => false,
       "text" => "#{template['name']} #{search['aliasName'].to_s.sub('Templates', 'Template')}".strip,
       "url" => template_url,
